@@ -1,5 +1,4 @@
-
-FROM jenkins:2.60.3
+FROM jenkins/jenkins:2.73.1
 # if we want to install via apt
 USER root
 
@@ -7,7 +6,7 @@ USER root
 RUN apt-get update && apt-get install -y apt-transport-https curl libunwind8 gettext && \
 curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg && \
 mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg && \
-sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-debian-stretch-$
+sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-debian-stretch-prod stretch main" > /etc/apt/sources.list.d/dotnetdev.list'
 
 
 
